@@ -38,7 +38,8 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style x:Key="FeedbackLabelStyle" TargetType="Label">
-            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="30"/>
             <Setter Property="Foreground" Value="Red"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -261,11 +262,11 @@
                 Grid.Column="1"
                 Style="{StaticResource BorderStyle}">
                     <StackPanel
-                    Orientation="Vertical" Height="188" Margin="0.4,0,0,-0.4" VerticalAlignment="Bottom">
+                        Orientation="Vertical"
+                        VerticalAlignment="Top">
                         <Label
                         Content="Edit Widget"
                         Style="{StaticResource SubHeaderStyle}"/>
-
                         <StackPanel
                             Grid.Column="0"
                             Orientation="Vertical">
@@ -331,7 +332,8 @@
                 Grid.Column="1"
                 Style="{StaticResource BorderStyle}">
                     <StackPanel
-                    Orientation="Vertical" Height="188" Margin="0.4,0,0,-0.4" VerticalAlignment="Bottom">
+                        Orientation="Vertical" 
+                        VerticalAlignment="Top">
                         <Label
                         Content="Add Widget"
                         Style="{StaticResource SubHeaderStyle}"/>

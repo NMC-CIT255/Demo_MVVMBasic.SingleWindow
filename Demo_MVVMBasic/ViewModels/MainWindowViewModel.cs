@@ -135,6 +135,11 @@ namespace Demo_MVVMBasic
             //
 
             string commandParameter = parameter.ToString();
+            //if (commandParameter == "LOADWIDGET");
+            //{
+
+            //}
+
             if (commandParameter == "SAVE")
             {
                 if (WidgetToEdit != null)
@@ -149,7 +154,7 @@ namespace Demo_MVVMBasic
             }
             else if (commandParameter == "CANCEL")
             {
-                WidgetToEdit = SelectedWidget;
+                WidgetToEdit = SelectedWidget.Copy();
                 WidgetOperationFeedback = "Widget Update Canceled";
             }
             else

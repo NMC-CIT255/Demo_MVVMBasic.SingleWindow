@@ -8,20 +8,15 @@ using Demo_MVVMBasic;
 namespace Demo_MVVMBasic.Models
 {
     public class Widget : ObservableObject
-    {
-        private int _currentInventory;
-        private string _name;
+    {        private string _name;
         private string _color;
         private double _unitPrice;
+        private int _currentInventory;
 
         public string Name
         {
             get { return _name; }
-            set 
-            { 
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-            }
+            set { _name = value; }
         }
 
         public string Color
@@ -35,7 +30,6 @@ namespace Demo_MVVMBasic.Models
             get { return _unitPrice; }
             set { _unitPrice = value; }
         }
-
 
         public int CurrentInventory
         {
