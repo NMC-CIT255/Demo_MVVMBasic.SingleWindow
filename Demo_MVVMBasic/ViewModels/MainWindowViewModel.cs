@@ -127,7 +127,6 @@ namespace Demo_MVVMBasic
                 throw new ArgumentException($"{commandParameter} is not a valid command parameter for the adding widgets.");
             }
             WidgetToAdd = new Widget();
-
         }
 
         public void EditWidget(object parameter)
