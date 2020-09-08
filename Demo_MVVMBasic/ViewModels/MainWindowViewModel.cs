@@ -36,6 +36,7 @@ namespace Demo_MVVMBasic
             set
             {
                 _selectedWidget = value;
+                WidgetToEdit = SelectedWidget.Copy();
                 OnPropertyChanged(nameof(SelectedWidget));
             }
         }
@@ -84,9 +85,7 @@ namespace Demo_MVVMBasic
             ButtonQuitCommand = new RelayCommand(new Action<object>(QuitWidget));
 
             WidgetToAdd = new Widget();
-            WidgetToEdit = new Widget();
-
-            WidgetToEdit.Name = "john";
+            WidgetToEdit = SelectedWidget.Copy();
         }
 
         public void SellWidgets(object parameter)
@@ -135,35 +134,28 @@ namespace Demo_MVVMBasic
             // TODO - add code to validate user input
             //
 
-            WidgetToEdit.Name = "Amy";
-
             string commandParameter = parameter.ToString();
-            if (commandParameter == "LOADWIDGET")
+            if (commandParameter == "SAVE")
             {
-                //
-                // Copy method uses makes a Shallow Copy
-                //
-                WidgetToEdit = SelectedWidget;
-                WidgetToAdd.Name = "Fred";
-            }
-            else if (commandParameter == "SAVE")
-            {
-                if (WidgetToAdd != null)
+                if (WidgetToEdit != null)
                 {
-                    Widgets.Remove(SelectedWidget);
+                    Widget widgetToDelete = SelectedWidget;
                     Widgets.Add(WidgetToEdit);
-                    WidgetOperationFeedback = "Widget Updated";
+                    SelectedWidget = WidgetToEdit;
+                    Widgets.Remove(widgetToDelete);
+
+                    WidgetOperationFeedback = "Widget Updated";                    
                 }
             }
             else if (commandParameter == "CANCEL")
             {
+                WidgetToEdit = SelectedWidget;
                 WidgetOperationFeedback = "Widget Update Canceled";
             }
             else
             {
                 throw new ArgumentException($"{commandParameter} is not a valid command parameter for the adding widgets.");
             }
-            WidgetToEdit = new Widget();
         }
 
         public void DeleteWidget(object parameter)

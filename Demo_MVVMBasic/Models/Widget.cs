@@ -11,15 +11,31 @@ namespace Demo_MVVMBasic.Models
     {
         private int _currentInventory;
         private string _name;
+        private string _color;
+        private double _unitPrice;
 
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set 
+            { 
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
-        public string Color { get; set; }
-        public double UnitPrice { get; set; }
+        public string Color
+        {
+            get { return _color; }
+            set { _color = value; }
+        }
+
+        public double UnitPrice
+        {
+            get { return _unitPrice; }
+            set { _unitPrice = value; }
+        }
+
 
         public int CurrentInventory
         {
@@ -37,7 +53,13 @@ namespace Demo_MVVMBasic.Models
         /// <returns>Shallow Copy of the Widget object</returns>
         public Widget Copy()
         {
-            return (Widget)this.MemberwiseClone();
+            return new Widget()
+            {
+                Name = _name,
+                Color = _color,
+                UnitPrice = _unitPrice,
+                CurrentInventory = _currentInventory
+            };
         }
     }
 }
