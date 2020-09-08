@@ -1,0 +1,170 @@
+﻿<Window x:Class="Demo_MVVMBasic.Views.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo_MVVMBasic.Views"
+        mc:Ignorable="d"
+        Title="Demo MVVM Basic" 
+        Height="350" 
+        Width="370">
+    <Window.Resources>
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="DarkGoldenrod" />
+        </Style>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="SubHeaderStyle" TargetType="Label">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style >
+        <Style x:Key="DetailComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style x:Key="DetailLabelStyle" TargetType="Label">
+            <Setter Property="Width" Value="75"></Setter>
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="DetailTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style x:Key="DetailStackPanelStyle" TargetType="StackPanel">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="MasterLabelTextStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="ButtonStyleLarge" TargetType="Button">
+            <Setter Property="Background" Value="DarkGoldenrod"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyleSmall" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="10,5,10,5"/>
+            <Setter Property="Background" Value="DarkGoldenrod"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid
+        HorizontalAlignment="Center">
+        <StackPanel
+            Orientation="Vertical"
+            Margin="20">
+            <Label
+                Content="Acme Widgets"
+                HorizontalAlignment="Center"
+                Style="{StaticResource HeaderStyle }"/>
+            <!--
+                Widget Management Section                
+             -->
+            <Border 
+                Style="{StaticResource BorderStyle}">
+                <StackPanel
+                    Orientation="Vertical">
+                    <Label
+                        Content="Add Widget"
+                        Style="{StaticResource SubHeaderStyle}"/>
+
+                    <StackPanel
+                            Grid.Column="0"
+                            Orientation="Vertical">
+                        <StackPanel
+                                Style="{StaticResource DetailStackPanelStyle}">
+                            <Label
+                                    Content="Name"
+                                    Style="{StaticResource DetailLabelStyle}"
+                                />
+                            <TextBox
+                                    Text="{Binding UserWidget.Name}"
+                                    Style="{StaticResource DetailTextBoxStyle}"/>
+                        </StackPanel>
+                        <StackPanel
+                                Style="{StaticResource DetailStackPanelStyle}">
+                            <Label
+                                    Content="Color"
+                                    Style="{StaticResource DetailLabelStyle}"
+                                />
+                            <TextBox
+                                    Text="{Binding UserWidget.Color}"
+                                    Style="{StaticResource DetailTextBoxStyle}"/>
+                        </StackPanel>
+                        <StackPanel
+                                Style="{StaticResource DetailStackPanelStyle}">
+                            <Label
+                                    Content="Price"
+                                    Style="{StaticResource DetailLabelStyle}"
+                                />
+                            <TextBox
+                                    Text="{Binding UserWidget.UnitPrice}"
+                                    Style="{StaticResource DetailTextBoxStyle}"/>
+                        </StackPanel>
+                        <StackPanel
+                                Style="{StaticResource DetailStackPanelStyle}">
+                            <Label
+                                    Content="Inventory"
+                                    Style="{StaticResource DetailLabelStyle}"
+                                />
+                            <TextBox
+                                    Text="{Binding UserWidget.CurrentInventory}"
+                                    Style="{StaticResource DetailTextBoxStyle}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <StackPanel
+                Orientation="Horizontal">
+                <Button 
+                    Content="Save" 
+                    Style="{StaticResource ButtonStyleSmall}"
+                    Command="{Binding ButtonSaveCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                <Button 
+                    Content="Cancel" 
+                    Style="{StaticResource ButtonStyleSmall}"
+                    Command="{Binding ButtonCancelCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>
