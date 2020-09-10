@@ -133,11 +133,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-
-
                 <!--
                 Widget Management Section                
-             -->
+                -->
                 <Border 
                 Grid.Row="0"
                 Grid.Column="0"
@@ -215,6 +213,7 @@
                             Style="{StaticResource FeedbackLabelStyle}"/>
                     </StackPanel>
                 </Border>
+                
                 <!--
                 Widget Transaction Section                
                 -->
@@ -252,6 +251,9 @@
                     </StackPanel>
                 </Border>
 
+                <!--
+                Widget Edit Section                
+                -->
                 <Border 
                 Grid.Row="0"
                 Grid.Column="1"
@@ -322,6 +324,9 @@
                     </StackPanel>
                 </Border>
 
+                <!--
+                Widget Add Section                
+                -->
                 <Border 
                 Grid.Row="1"
                 Grid.Column="1"
