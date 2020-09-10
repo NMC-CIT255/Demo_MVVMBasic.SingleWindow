@@ -205,11 +205,6 @@
                                 Grid.Column="1"
                                 Orientation="Vertical">
                                 <Button 
-                                    Content="Edit" 
-                                    Style="{StaticResource ButtonStyleSmall}"
-                                    Command="{Binding ButtonEditCommand}" 
-                                    CommandParameter="LOADWIDGET" />
-                                <Button 
                                     Content="Delete" 
                                     Style="{StaticResource ButtonStyleSmall}"
                                     Command="{Binding ButtonDeleteCommand}"/>
@@ -222,7 +217,7 @@
                 </Border>
                 <!--
                 Widget Transaction Section                
-             -->
+                -->
                 <Border 
                 Grid.Row="1"
                 Grid.Column="0"

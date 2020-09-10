@@ -9,7 +9,6 @@ using Demo_MVVMBasic.Models;
 using Demo_MVVMBasic.Data;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
-using Demo_MVVMBasic.Views;
 using System.Net.NetworkInformation;
 
 namespace Demo_MVVMBasic
@@ -36,8 +35,11 @@ namespace Demo_MVVMBasic
             set
             {
                 _selectedWidget = value;
-                WidgetToEdit = SelectedWidget.Copy();
-                OnPropertyChanged(nameof(SelectedWidget));
+                if (_selectedWidget != null)
+                {
+                    WidgetToEdit = SelectedWidget.Copy();
+                    OnPropertyChanged(nameof(SelectedWidget));
+                }
             }
         }
 
@@ -135,10 +137,6 @@ namespace Demo_MVVMBasic
             //
 
             string commandParameter = parameter.ToString();
-            //if (commandParameter == "LOADWIDGET");
-            //{
-
-            //}
 
             if (commandParameter == "SAVE")
             {
@@ -149,7 +147,7 @@ namespace Demo_MVVMBasic
                     SelectedWidget = WidgetToEdit;
                     Widgets.Remove(widgetToDelete);
 
-                    WidgetOperationFeedback = "Widget Updated";                    
+                    WidgetOperationFeedback = "Widget Updated";
                 }
             }
             else if (commandParameter == "CANCEL")
